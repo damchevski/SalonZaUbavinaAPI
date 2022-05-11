@@ -14,7 +14,7 @@
 # Zimanje na site termini vo daden den *da se zapazi formatot na datumot*
   http://localhost:5000/api/Schedule/GetAllSchedulesForDate?date=11.05.2022
 
-# Zimanje na site slobodni saati za termini denes
+# Zimanje na site slobodni saati za termini na daden den *voj mesec*
   http://localhost:5000/api/Schedule/GetAllFreeTermsForDay?day=11
   
 # Odobruvanje na termin
