@@ -102,8 +102,8 @@ namespace SalonZaUbavinaAPI.Controllers
             return Ok(times);
         }
 
-        [HttpPost("MarkScheduleAsApproved")]
-        public IActionResult MarkScheduleAsApproved([FromQuery] int scheduleId)
+        [HttpPost("MarkScheduleAs")]
+        public IActionResult MarkScheduleAs([FromQuery] int scheduleId, [FromQuery] bool approved)
         {
             Schedule schedule = dbContext.Schedules
                 .Where(x => x.Id == scheduleId)
@@ -112,8 +112,11 @@ namespace SalonZaUbavinaAPI.Controllers
             if (schedule == null)
                 return BadRequest("Schedule doesn't exists!");
 
+            string searchStatus = "Approved";
+            if (!approved) { searchStatus = "Denied"; }
+
             ScheduleStatus statusApproved = dbContext.ScheduleStatuses
-                .Where(x => x.Status == "Approved")
+                .Where(x => x.Status == searchStatus)
                 .FirstOrDefault();
 
             if (statusApproved == null)
@@ -142,7 +145,5 @@ namespace SalonZaUbavinaAPI.Controllers
 
             return Ok(schedule);
         }
-
-
     }
 }

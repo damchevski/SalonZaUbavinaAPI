@@ -20,6 +20,11 @@ namespace SalonZaUbavinaAPI.DataAccess
                 dbContext.ScheduleStatuses.Add(new ScheduleStatus() { Status = "Approved" });
             }
 
+            if (!dbContext.ScheduleStatuses.Any(x => x.Status.Equals("Denied")))
+            {
+                dbContext.ScheduleStatuses.Add(new ScheduleStatus() { Status = "Denied" });
+            }
+
             dbContext.SaveChanges();
         }
     }
