@@ -15,8 +15,8 @@ namespace SalonZaUbavinaAPI.DataAccess
 
         }
 
-        public virtual DbSet<Schedule> Schedules { get; set; }
-        public virtual DbSet<ScheduleStatus> ScheduleStatuses { get; set; }
+        public virtual DbSet<Appointment> Appointments { get; set; }
+        public virtual DbSet<AppointmentStatus> AppointmentStatuses { get; set; }
 
     }
 }

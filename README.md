@@ -1,25 +1,25 @@
 # SalonZaUbavinaAPI
 
-# Kreiranje termin *DateTime se prakja kako string, da se zapazi formatot*
+# Kreiranje termin *DateTime se prakja kako string, da se zapazi formatot* - POST
   http://localhost:5000/api/Schedule/CreateSchedule
   Body:
-    {
-    "DateTime" : "11.05.2022 12:00",
+   {
+    "DateTime" : "05.15.2022 13:00",
     "User": "ane damch",
-    "ScheduleDescription": "Test desc cupkanje",
+    "AppointmentDescription": "Test desc cupkanje",
     "PhoneNumber" : "070364003",
     "UserEmail" : "damch@gmail.com"
-    }
+	}
 
-# Zimanje na site termini vo daden den *da se zapazi formatot na datumot*
-  http://localhost:5000/api/Schedule/GetAllSchedulesForDate?date=11.05.2022
+# Zimanje na site termini vo daden den *da se zapazi formatot na datumot* - GET
+  http://localhost:5000/api/Appointment/GetAllAppointmentsForDate?date=05.15.2022
 
-# Zimanje na site slobodni saati za termini na daden den *voj mesec*
-  http://localhost:5000/api/Schedule/GetAllFreeTermsForDay?day=11
+# Zimanje na site slobodni saati za termini na daden den *voj mesec* - GET
+  http://localhost:5000/api/Appointment/GetAllFreeTermsForDay?day=11
   
-# Odobruvanje na termin
-  http://localhost:5000/api/Schedule/MarkScheduleAsApproved?scheduleId=4
+# Odobruvanje na termin - POST
+  http://localhost:5000/api/Appointment/MarkAppointmentAs?appointmentId=8&approved=true
 
-# Zimanje detali za daden termin
-  http://localhost:5000/api/Schedule/GetScheduleDetails?scheduleId=4
+# Zimanje detali za daden termin - GEt
+  http://localhost:5000/api/Appointment/GetAppointmentDetails?appointmentId=8
   

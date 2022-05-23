@@ -10,19 +10,19 @@ namespace SalonZaUbavinaAPI.DataAccess
     {
         public static void Seed(this BeautySalonContext dbContext)
         {
-            if (!dbContext.ScheduleStatuses.Any(x => x.Status.Equals("New")))
+            if (!dbContext.AppointmentStatuses.Any(x => x.Status.Equals("New")))
             {
-                dbContext.ScheduleStatuses.Add(new ScheduleStatus() { Status = "New" });
+                dbContext.AppointmentStatuses.Add(new AppointmentStatus() { Status = "New" });
             }
 
-            if (!dbContext.ScheduleStatuses.Any(x => x.Status.Equals("Approved")))
+            if (!dbContext.AppointmentStatuses.Any(x => x.Status.Equals("Approved")))
             {
-                dbContext.ScheduleStatuses.Add(new ScheduleStatus() { Status = "Approved" });
+                dbContext.AppointmentStatuses.Add(new AppointmentStatus() { Status = "Approved" });
             }
 
-            if (!dbContext.ScheduleStatuses.Any(x => x.Status.Equals("Denied")))
+            if (!dbContext.AppointmentStatuses.Any(x => x.Status.Equals("Denied")))
             {
-                dbContext.ScheduleStatuses.Add(new ScheduleStatus() { Status = "Denied" });
+                dbContext.AppointmentStatuses.Add(new AppointmentStatus() { Status = "Denied" });
             }
 
             dbContext.SaveChanges();

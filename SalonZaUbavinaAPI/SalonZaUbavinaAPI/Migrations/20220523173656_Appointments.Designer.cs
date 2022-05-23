@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SalonZaUbavinaAPI.DataAccess;
 
 namespace SalonZaUbavinaAPI.Migrations
 {
     [DbContext(typeof(BeautySalonContext))]
-    partial class BeautySalonContextModelSnapshot : ModelSnapshot
+    [Migration("20220523173656_Appointments")]
+    partial class Appointments
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,13 +28,13 @@ namespace SalonZaUbavinaAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AppointmentDescription")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ScheduleDescription")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("StatusId")
