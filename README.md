@@ -1,7 +1,7 @@
 # SalonZaUbavinaAPI
 
-# Kreiranje termin *DateTime se prakja kako string, da se zapazi formatot* - POST
-  http://localhost:5000/api/Schedule/CreateSchedule
+# Kreiranje termin *DateTime se prakja kako string, da se zapazi formatot (mesec.den.godina hh:mm* - POST
+  http://localhost:5000/api/Appointment/CreateAppointment
   Body:
    {
     "DateTime" : "05.15.2022 13:00",
@@ -11,7 +11,7 @@
     "UserEmail" : "damch@gmail.com"
 	}
 
-# Zimanje na site termini vo daden den *da se zapazi formatot na datumot* - GET
+# Zimanje na site termini vo daden den *da se zapazi formatot na datumot (mesec.den.godina) * - GET
   http://localhost:5000/api/Appointment/GetAllAppointmentsForDate?date=05.15.2022
 
 # Zimanje na site slobodni saati za termini na daden den *voj mesec* - GET
