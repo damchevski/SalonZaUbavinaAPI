@@ -27,10 +27,10 @@ namespace SalonZaUbavinaAPI.Controllers
         [HttpPost("CreateAppointment")]
         public IActionResult CreateAppointment([FromBody] AppointmentDto appointment)
         {
-            if(string.IsNullOrEmpty(appointment.User) 
-                || string.IsNullOrEmpty(appointment.AppointmentDescription)
+            if(string.IsNullOrEmpty(appointment.ClientName) 
+                || string.IsNullOrEmpty(appointment.ServiceDescription)
                 || string.IsNullOrEmpty(appointment.DateTime)
-                || string.IsNullOrEmpty(appointment.UserEmail))
+                || string.IsNullOrEmpty(appointment.Email))
             {
                 return BadRequest("Please fill all fields!");
             }
@@ -43,10 +43,10 @@ namespace SalonZaUbavinaAPI.Controllers
             Appointment newappointment = new Appointment()
             {
                 DateTime = DateTime.Parse(appointment.DateTime,CultureInfo.InvariantCulture),
-                AppointmentDescription = appointment.AppointmentDescription,
+                ServiceDescription = appointment.ServiceDescription,
                 StatusId = statusNew.Id,
-                User = appointment.User,
-                UserEmail = appointment.UserEmail,
+                ClientName = appointment.ClientName,
+                Email = appointment.Email,
                 PhoneNumber = appointment.PhoneNumber
             };
 
@@ -67,6 +67,7 @@ namespace SalonZaUbavinaAPI.Controllers
             if (string.IsNullOrEmpty(date))
                 return Ok(dbContext.Appointments
                     .Include(x => x.Status)
+                    .OrderByDescending(x => x.DateTime)
                     .ToList());
 
             DateTime dateRequest = DateTime.Parse(date);
@@ -74,6 +75,7 @@ namespace SalonZaUbavinaAPI.Controllers
             return Ok(dbContext.Appointments
                 .Include(x => x.Status)
                 .Where(x => x.DateTime.Day == dateRequest.Day && x.DateTime.Month == dateRequest.Month)
+                .OrderByDescending(x => x.DateTime)
                 .ToList());
         }
 
@@ -140,7 +142,7 @@ namespace SalonZaUbavinaAPI.Controllers
             };
 
             var additionalMessage = searchStatus == "Approved" ? "We expect you on: " + appointment.DateTime.ToString() : "";
-            using (var message = new MailMessage("testakau35@gmail.com", appointment.UserEmail)
+            using (var message = new MailMessage("testakau35@gmail.com", appointment.Email)
             {
                 Subject = "Your term was "+ searchStatus +"!",
                 Body = "Your term in our salon was " + searchStatus + "!" + additionalMessage

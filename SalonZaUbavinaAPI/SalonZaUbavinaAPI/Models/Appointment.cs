@@ -10,11 +10,11 @@ namespace SalonZaUbavinaAPI.Models
     public class Appointment : Base
     {
         public DateTime DateTime { get; set; }
-        public string User { get; set; }
-        public string AppointmentDescription { get; set; }
+        public string ClientName { get; set; }
+        public string ServiceDescription { get; set; }
         public int StatusId { get; set; }
         public virtual AppointmentStatus Status { get; set; }
         public string PhoneNumber { get; set; }
-        public string UserEmail { get; set; }
+        public string Email { get; set; }
     }
 }

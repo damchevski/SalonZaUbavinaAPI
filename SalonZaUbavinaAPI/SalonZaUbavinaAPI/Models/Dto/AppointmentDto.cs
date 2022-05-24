@@ -8,9 +8,9 @@ namespace SalonZaUbavinaAPI.Models.Dto
     public class AppointmentDto
     {
         public string DateTime { get; set; }
-        public string User { get; set; }
-        public string AppointmentDescription { get; set; }
+        public string ClientName { get; set; }
+        public string ServiceDescription { get; set; }
         public string PhoneNumber { get; set; }
-        public string UserEmail { get; set; }
+        public string Email { get; set; }
     }
 }
